@@ -6,9 +6,9 @@ import firebase from "firebase/compat";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Add_Apartment from "./components/Add_lejlighed";
-import ApartmentDetails from "./components/LejlighedDetails";
-import ApartmentList from "./components/LejlighedList";
+import Add_Apartment from "./Components/Add_lejlighed";
+//import ApartmentDetails from "./Components/LejlighedDetails";
+import ApartmentList from "./Components/LejlighedList";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 
@@ -29,11 +29,14 @@ const firebaseConfig = {
   appId: "1:949004649498:web:a2dc26943ce9816733fda3"
 };
 
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
   const StackNavigation = () => {
     return(
         <Stack.Navigator>
           <Stack.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
-          <Stack.Screen name={'Detalje om lejlighed'} component={ApartmentDetails}/>
           <Stack.Screen name={'Tilføj lejlighed'} component={Add_Apartment}/>
         </Stack.Navigator>
     )
