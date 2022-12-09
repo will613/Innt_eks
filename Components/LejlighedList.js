@@ -26,7 +26,7 @@ const ApartmentList = ({navigation}) => {
     const handleSelectCar = id => {
         /*Her søger vi direkte i vores array af biler og finder bil objektet som matcher idet vi har tilsendt*/
         const apartment = Object.entries(apartments).find( apartment => apartment[0] === id /*id*/)
-        navigation.navigate('Apartment Details', { screen:'Home' });
+        navigation.navigate('Apartment Details', { apartment });
     };
 
     // Flatlist forventer et array. Derfor tager vi alle values fra vores cars objekt, og bruger som array til listen
