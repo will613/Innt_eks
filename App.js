@@ -13,6 +13,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import StackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
+import MyStack from "./Components/StackNavigator";
+import MyTabs from "./Components/TabNavigator";
+
 
 
 // Your web app's Firebase configuration
@@ -26,8 +29,8 @@ const firebaseConfig_database = {
     appId: "1:949004649498:web:a2dc26943ce9816733fda3"
 };
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+//const Stack = createStackNavigator();
+//const Tab = createBottomTabNavigator();
 
 export default function App() {
 
@@ -62,29 +65,48 @@ export default function App() {
 
     const GuestPage = () => {
         return(
-            <NavigationContainer>
-              <Tab.Navigator>
-                <Tab.Screen name="Register" component={SignUpForm} />
-                <Tab.Screen name="Login" component={LoginForm}/>
-              </Tab.Navigator>
-            </NavigationContainer>
-        )
+         <NavigationContainer>
+           <MyTabs />
+         </NavigationContainer>
+        );
       }
 
     const HomePage = () => {
-    return(
-       <NavigationContainer>
-         <Tab.Navigator>
-          <Tab.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
-          <Tab.Screen name={'Apartment Details'} component={ApartmentDetails}/>
-          <Tab.Screen name={'Tilføj lejlighed'} component={Add_Apartment}/>
-        </Tab.Navigator>
-       </NavigationContainer>
-    )
-  }
-
-        return user.loggedIn ? <HomePage /> : <GuestPage/> ;
+        return (
+            <NavigationContainer>
+               <MyStack />
+            </NavigationContainer>
+        )
+    }
+      return user.loggedIn ?  <HomePage/> : <GuestPage/>   ;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 return (
@@ -95,13 +117,14 @@ return (
       </Tab.Navigator>
     </NavigationContainer>
 );
-*/
 
-/*const styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-});*/
+});
+  */
