@@ -77,7 +77,7 @@ export default function App() {
          <Tab.Navigator>
           <Tab.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
           <Tab.Screen name={'Apartment Details'} component={ApartmentDetails}/>
-          <Tab.Screen name={'Tilføj lejlighed'} component={Add_Apartment}/>
+          <Tab.Screen name={'Add Apartment'} component={Add_Apartment}/>
         </Tab.Navigator>
        </NavigationContainer>
     )
