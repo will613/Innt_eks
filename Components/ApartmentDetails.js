@@ -19,7 +19,7 @@ const ApartmentDetails = ({route,navigation}) => {
     const handleEdit = () => {
         // Vi navigerer videre til Edit apartment skærmen og sender den specifike apartment videre med
         const apartment = route.params.apartment
-        navigation.navigate("Add Apartment", { apartment });
+        navigation.navigate("Edit Apartment", { apartment });
     };
 
 

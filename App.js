@@ -6,7 +6,7 @@ import firebase from "firebase/compat";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Add_Apartment from "./Components/AddApartment";
+import Add_Apartment from "./Components/Add_edit_Apartment";
 import ApartmentDetails from "./Components/ApartmentDetails";
 import ApartmentList from "./Components/LejlighedList";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -77,8 +77,9 @@ export default function App() {
          <Tab.Navigator>
           <Tab.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
           <Tab.Screen name={'Apartment Details'} component={ApartmentDetails}/>
-          <Tab.Screen name={'Add Apartment'} component={Add_Apartment}/>
-        </Tab.Navigator>
+          <Tab.Screen name={'Edit Apartment'} component={Add_Apartment}/>
+             <Tab.Screen name={'Add Apartment'} component={Add_Apartment}/>
+         </Tab.Navigator>
        </NavigationContainer>
     )
   }
