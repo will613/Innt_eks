@@ -6,8 +6,8 @@ import firebase from "firebase/compat";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Add_Apartment from "./Components/Add_lejlighed";
-import ApartmentDetails from "./Components/LejlighedDetails";
+import Add_Apartment from "./Components/AddApartment";
+import ApartmentDetails from "./Components/ApartmentDetails";
 import ApartmentList from "./Components/LejlighedList";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -38,7 +38,7 @@ const firebaseConfig_database = {
     return(
         <Stack.Navigator>
           <Stack.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
-          <Stack.Screen name={'test'} component={ApartmentDetails}/>
+          <Stack.Screen name={'Apartment Details'} component={ApartmentDetails}/>
           <Stack.Screen name={'Tilføj lejlighed'} component={Add_Apartment}/>
         </Stack.Navigator>
     )

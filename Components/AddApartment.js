@@ -14,7 +14,6 @@ import {useEffect, useState} from "react";
 
 
 const Add_Apartment = ({navigation,route}) => {
-
     const initialState = {
         address: '',
         size: '',
@@ -24,8 +23,7 @@ const Add_Apartment = ({navigation,route}) => {
     }
 
     const [newApartment,setNewApartment] = useState(initialState);
-
-    /*Returnere true, hvis vi er på edit car*/
+    /*Returnere true, hvis vi er på edit apartment*/
     const isEditApartment = route.name === "Edit Apartment";
 
     useEffect(() => {
@@ -61,7 +59,7 @@ const Add_Apartment = ({navigation,route}) => {
                     .update({ address, size, bedrooms, bathrooms, payment });
                 // Når bilen er ændret, går vi tilbage.
                 Alert.alert("Din info er nu opdateret");
-                const car = [id,newApartment]
+                const apartment = [id,newApartment]
                 navigation.navigate("Apartment Details",{apartment});
             } catch (error) {
                 console.log(`Error: ${error.message}`);

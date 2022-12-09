@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
+import { Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
 
@@ -20,13 +20,13 @@ const ApartmentList = ({navigation}) => {
 
     // Vi viser ingenting hvis der ikke er data
     if (!apartments) {
-        return <Text style={styles.container}>TEST</Text>;
+        return <Text>Loading...</Text>;
     }
 
-    const handleSelectCar = id => {
-        /*Her søger vi direkte i vores array af biler og finder bil objektet som matcher idet vi har tilsendt*/
+    const handleSelectApartment = id => {
+        /*Her søger vi direkte i vores array af apartments og finder apartment objektet som matcher idet vi har tilsendt*/
         const apartment = Object.entries(apartments).find( apartment => apartment[0] === id /*id*/)
-        navigation.navigate('Apartment Details', { screen:'Home' });
+        navigation.navigate('Apartment Details', { apartment });
     };
 
     // Flatlist forventer et array. Derfor tager vi alle values fra vores cars objekt, og bruger som array til listen
@@ -40,7 +40,7 @@ const ApartmentList = ({navigation}) => {
             keyExtractor={(item, index) => apartmentKeys[index]}
             renderItem={({item, index }) => {
                 return(
-                    <TouchableOpacity style={styles.container} onPress={() => handleSelectCar(apartmentKeys[index])}>
+                    <TouchableOpacity style={styles.container} onPress={() => handleSelectApartment(apartmentKeys[index])}>
                         <Text>
                             {item.address} {item.size}
                         </Text>
