@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 import ApartmentList from "./LejlighedList";
+import {ChatFunction} from "./Chat"
 import ApartmentDetails from "./ApartmentDetails";
 import Add_Apartment from "./AddApartment";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -21,15 +22,17 @@ function MyStack () {
             <Stack.Screen name={'Add Apartment'} component={Add_Apartment}/>
         </Stack.Navigator>
     )
-
-    return(
-
-        <Tab.Navigator>
-            <Tab.Screen name={'Home'} component={MyStack} options={{tabBarIcon: () => ( <Ionicons name="home" size={20} />),headerShown:null}}/>
-            <Tab.Screen name={'Add'} component={Add_Apartment} options={{tabBarIcon: () => ( <Ionicons name="add" size={20} />)}}/>
-        </Tab.Navigator>
-
-    )
 }
+    function BottomStack()
+    {
+        return (
+            <Tab.Navigator screenOptions={{ headerShown: false}}>
+                <Tab.Screen name={'Home'} component={MyStack}
+                            options={{tabBarIcon: () => (<Ionicons name="home" size={20}/>), headerShown: null}}/>
+                <Tab.Screen name={'Chat'} component={ChatFunction}
+                            options={{tabBarIcon: () => (<Ionicons name="add" size={20}/>)}}/>
+            </Tab.Navigator>
+        )
+    }
 
-export default MyStack
+export default BottomStack
