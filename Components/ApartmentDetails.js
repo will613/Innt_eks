@@ -17,10 +17,9 @@ const ApartmentDetails = ({route,navigation}) => {
     });
 
     const handleEdit = () => {
-        // Vi navigerer videre til EditCar skærmen og sender bilen videre med
-        // Vi navigerer videre til Edit apartment skærmen og sender bilen videre med
+        // Vi navigerer videre til Edit apartment skærmen og sender den specifike apartment videre med
         const apartment = route.params.apartment
-        navigation.navigate('Edit Apartment', { apartment });
+        navigation.navigate("Add Apartment", { apartment });
     };
 
 
@@ -69,15 +68,9 @@ const ApartmentDetails = ({route,navigation}) => {
                 Object.entries(apartment).map((item,index)=>{
                     return(
                         <View style={styles.row} key={index}>
-
-                            {/*Vores car keys navn*/}
-                            <Text style={styles.label}>{item[0]} </Text>
-                            {/*Vores car values navne */}
-
                             {/*Vores apartment keys navn*/}
                             <Text style={styles.label}>{item[0]} </Text>
                             {/*Vores apartment values navne */}
-
                             <Text style={styles.value}>{item[1]}</Text>
                         </View>
                     )
