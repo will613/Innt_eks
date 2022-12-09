@@ -61,7 +61,7 @@ const Add_Apartment = ({navigation,route}) => {
                     .update({ address, size, bedrooms, bathrooms, payment });
                 // Når bilen er ændret, går vi tilbage.
                 Alert.alert("Din info er nu opdateret");
-                const car = [id,newApartment]
+                const apartment = [id,newApartment]
                 navigation.navigate("Apartment Details",{apartment});
             } catch (error) {
                 console.log(`Error: ${error.message}`);

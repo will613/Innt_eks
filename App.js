@@ -71,12 +71,12 @@ export default function App() {
         )
       }
 
-    const  HomePage = () => {
+    const HomePage = () => {
     return(
        <NavigationContainer>
          <Tab.Navigator>
           <Tab.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
-          <Tab.Screen name={'test'} component={ApartmentDetails}/>
+          <Tab.Screen name={'Apartment Details'} component={ApartmentDetails}/>
           <Tab.Screen name={'Tilføj lejlighed'} component={Add_Apartment}/>
         </Tab.Navigator>
        </NavigationContainer>
