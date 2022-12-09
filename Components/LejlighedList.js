@@ -11,7 +11,7 @@ const ApartmentList = ({navigation}) => {
         if(!apartments) {
             firebase
                 .database()
-                .ref('/Apartment')
+                .ref('/Cars')
                 .on('value', snapshot => {
                     setApartments(snapshot.val())
                 });
@@ -20,13 +20,13 @@ const ApartmentList = ({navigation}) => {
 
     // Vi viser ingenting hvis der ikke er data
     if (!apartments) {
-        return <Text>Loading...</Text>;
+        return <Text style={styles.container}>TEST</Text>;
     }
 
     const handleSelectCar = id => {
         /*Her søger vi direkte i vores array af biler og finder bil objektet som matcher idet vi har tilsendt*/
-        const apartment = Object.entries(apartment).find( apartment => apartment[0] === id /*id*/)
-        navigation.navigate('Apartment Details', { apartment });
+        const apartment = Object.entries(apartments).find( apartment => apartment[0] === id /*id*/)
+        navigation.navigate('Apartment Details', { screen:'Home' });
     };
 
     // Flatlist forventer et array. Derfor tager vi alle values fra vores cars objekt, og bruger som array til listen
@@ -38,7 +38,7 @@ const ApartmentList = ({navigation}) => {
             data={apartmentArray}
             // Vi bruger carKeys til at finde ID på den aktuelle bil og returnerer dette som key, og giver det med som ID til CarListItem
             keyExtractor={(item, index) => apartmentKeys[index]}
-            renderItem={({ item, index }) => {
+            renderItem={({item, index }) => {
                 return(
                     <TouchableOpacity style={styles.container} onPress={() => handleSelectCar(apartmentKeys[index])}>
                         <Text>
@@ -59,10 +59,11 @@ const styles = StyleSheet.create({
         flex: 1,
         borderWidth: 1,
         borderRadius:10,
-        margin: 5,
-        padding: 5,
+        margin: 20,
+        padding: 10,
         height: 50,
-        justifyContent:'center'
+        justifyContent:'center',
+        alignSelf:'center'
     },
     label: { fontWeight: 'bold' },
 });

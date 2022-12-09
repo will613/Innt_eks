@@ -7,9 +7,10 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Add_Apartment from "./Components/Add_lejlighed";
-//import ApartmentDetails from "./Components/LejlighedDetails";
+import ApartmentDetails from "./Components/LejlighedDetails";
 import ApartmentList from "./Components/LejlighedList";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
 
 
 
@@ -19,7 +20,7 @@ export default function App() {
  const Tab = createBottomTabNavigator();
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const firebaseConfig_database = {
   apiKey: "AIzaSyCjjBmD6q-n9nVL1D_bC5W9vnDkMZXFF4A",
   authDomain: "innt-eks.firebaseapp.com",
   databaseURL: "https://innt-eks-default-rtdb.europe-west1.firebasedatabase.app",
@@ -30,17 +31,20 @@ const firebaseConfig = {
 };
 
     if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig_database);
     }
 
   const StackNavigation = () => {
     return(
         <Stack.Navigator>
           <Stack.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
+          <Stack.Screen name={'test'} component={ApartmentDetails}/>
           <Stack.Screen name={'Tilføj lejlighed'} component={Add_Apartment}/>
         </Stack.Navigator>
     )
   }
+
+
 
   return (
       <NavigationContainer>

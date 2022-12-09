@@ -56,7 +56,7 @@ const Add_Apartment = ({navigation,route}) => {
             try {
                 firebase
                     .database()
-                    .ref(`/Apartment/${id}`)
+                    .ref(`/Cars/${id}`)
                     // Vi bruger update, så kun de felter vi angiver, bliver ændret
                     .update({ address, size, bedrooms, bathrooms, payment });
                 // Når bilen er ændret, går vi tilbage.
