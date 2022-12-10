@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, Platform, StyleSheet, Button, Alert } from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
+import * as url from "url";
 
 const ApartmentDetails = ({route,navigation}) => {
     const [apartment,setApartment] = useState({});

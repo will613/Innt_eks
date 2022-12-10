@@ -4,15 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import firebase from "firebase/compat";
 import {NavigationContainer} from "@react-navigation/native";
-import {createStackNavigator} from "@react-navigation/stack";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Add_Apartment from "./Components/Add_edit_Apartment";
-import ApartmentDetails from "./Components/ApartmentDetails";
-import ApartmentList from "./Components/LejlighedList";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import StackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
-import LoginForm from "./Components/LoginForm";
-import SignUpForm from "./Components/SignUpForm";
+import MyTabs from "./Components/TabNavigator";
+import BottomStack from "./Components/StackNavigator";
+
 
 
 // Your web app's Firebase configuration
@@ -26,8 +20,7 @@ const firebaseConfig_database = {
     appId: "1:949004649498:web:a2dc26943ce9816733fda3"
 };
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+
 
 export default function App() {
 
@@ -63,10 +56,7 @@ export default function App() {
     const GuestPage = () => {
         return(
             <NavigationContainer>
-              <Tab.Navigator>
-                <Tab.Screen name="Register" component={SignUpForm} />
-                <Tab.Screen name="Login" component={LoginForm}/>
-              </Tab.Navigator>
+              <MyTabs/>
             </NavigationContainer>
         )
       }
@@ -74,12 +64,7 @@ export default function App() {
     const HomePage = () => {
     return(
        <NavigationContainer>
-         <Tab.Navigator>
-          <Tab.Screen name={'Liste af lejlighed'} component={ApartmentList}/>
-          <Tab.Screen name={'Apartment Details'} component={ApartmentDetails}/>
-          <Tab.Screen name={'Edit Apartment'} component={Add_Apartment}/>
-             <Tab.Screen name={'Add Apartment'} component={Add_Apartment}/>
-         </Tab.Navigator>
+            <BottomStack/>
        </NavigationContainer>
     )
   }
@@ -87,16 +72,6 @@ export default function App() {
         return user.loggedIn ? <HomePage /> : <GuestPage/> ;
 }
 
-/*
-return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name={'Home'} component={HomePage} options={{tabBarIcon: () => ( <Ionicons name="home" size={20} />),headerShown:null}}/>
-        <Tab.Screen name={'Add'} component={Add_Apartment} options={{tabBarIcon: () => ( <Ionicons name="add" size={20} />)}}/>
-      </Tab.Navigator>
-    </NavigationContainer>
-);
-*/
 
 /*const styles = StyleSheet.create({
   container: {
