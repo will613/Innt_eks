@@ -99,6 +99,12 @@ const Add_Apartment = ({navigation,route}) => {
                         )
                     })
                 }
+                <View>
+                    <Text> Ranking A: Between 0 and 2000 DKK in payment</Text>
+                    <Text> Ranking B: Between 2001 and 4000 DKK in payment </Text>
+                    <Text> Ranking C: Between 4001 and 6000 DKK in payment </Text>
+                    <Text> Ranking D: Between 6001 and 8000+ DKK in payment </Text>
+                </View>
                 {/*Hvis vi er inde på edit car, vis save changes i stedet for add car*/}
                 <Button title={ isEditApartment ? "Save changes" : "Add Apartment"} onPress={() => handleSave()} />
             </ScrollView>
@@ -127,5 +133,12 @@ const styles = StyleSheet.create({
         padding:5,
         flex: 1
     },
+    titleText:{
+        fontSize: 10,
+        fontWeight: 'bold'
+    },
+    innerText1: {
+        color: 'orange'
+    }
 });
 
