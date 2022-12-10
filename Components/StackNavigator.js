@@ -3,7 +3,7 @@ import {createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator} from "@react-navigation/stack";
 
 import ApartmentList from "./LejlighedList";
-import ApartmentDetails from "./Add_edit_Apartment"
+import ApartmentDetails from "./ApartmentDetails"
 import Add_Apartment from "./Add_edit_Apartment";
 import {Chat} from "./Chat";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -27,7 +27,9 @@ function BottomStack ()
     return(
         <Tab.Navigator screenOptions={{ headerShown: false}}>
             <Tab.Screen name={'Home'} component={MyStack} options={{tabBarIcon : () => (<Ionicons name="home" size={20}/>), headerShown: null}}/>
-            <Tab.Screen name={'Chat'} component={Chat} options={{tabBarIcon : () => (<Ionicons name="add" size={20}/>), headerShown: null}}/>
+            <Tab.Screen name={'Add'} component={Add_Apartment} options={{tabBarIcon : () => (<Ionicons name="add" size={20}/>), headerShown: null}}/>
+            <Tab.Screen name={'Chat'} component={Chat} options={{tabBarIcon : () => (<Ionicons name="chatbox-outline" size={20}/>), headerShown: null}}/>
+
         </Tab.Navigator>
     )
 }
