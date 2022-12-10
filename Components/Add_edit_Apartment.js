@@ -122,6 +122,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         width: 100
     },
+    buttonStyle :{
+    backgroundColor: 'black',
+        borderWidth: 2,
+        borderColor: 'white',
+        borderRadius: 30,
+    },
     input: {
         borderWidth: 1,
         padding:5,

@@ -26,9 +26,9 @@ function BottomStack ()
 {
     return(
         <Tab.Navigator screenOptions={{ headerShown: false}}>
-            <Tab.Screen name={'Home'} component={MyStack} options={{tabBarIcon : () => (<Ionicons name="home" size={20}/>), headerShown: null}}/>
-            <Tab.Screen name={'Add'} component={Add_Apartment} options={{tabBarIcon : () => (<Ionicons name="add" size={20}/>), headerShown: null}}/>
-            <Tab.Screen name={'Chat'} component={Chat} options={{tabBarIcon : () => (<Ionicons name="chatbox-outline" size={20}/>), headerShown: null}}/>
+            <Tab.Screen name={'Home'} component={MyStack} options={{tabBarIcon : () => (<Ionicons name="home" size={28}/>), headerShown: null}}/>
+            <Tab.Screen name={'Add'} component={Add_Apartment} options={{tabBarIcon : () => (<Ionicons name="add" size={28}/>), headerShown: null}}/>
+            <Tab.Screen name={'Chat'} component={Chat} options={{tabBarIcon : () => (<Ionicons name="chatbox-outline" size={28} />), headerShown: null}}/>
 
         </Tab.Navigator>
     )

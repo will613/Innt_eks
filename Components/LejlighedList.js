@@ -98,6 +98,12 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         justifyContent: "center"
     },
+    buttonStyle:{
+        backgroundColor: 'black',
+        borderWidth: 2,
+        borderColor: 'white',
+        borderRadius: 30,
+    },
     title: {
         marginHorizontal: 10,
         margin: 5,

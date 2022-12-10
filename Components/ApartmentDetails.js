@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {Chat} from "./Chat";
 
 
+
 const ApartmentDetails = ({route,navigation}) => {
     const [apartment,setApartment] = useState({});
 
@@ -85,8 +86,6 @@ const ApartmentDetails = ({route,navigation}) => {
     //all content
     return (
         <View style={styles.container}>
-            <Button title="Edit" onPress={ () => handleEdit()} />
-            <Button title="Delete" onPress={() => confirmDelete()} />
             {
                 Object.entries(apartment).map((item,index)=>{
                     return(
@@ -102,6 +101,14 @@ const ApartmentDetails = ({route,navigation}) => {
             }
             <View>
                 <Image source={{uri: renderImage()}} style={styles.image}/>
+                <View style={styles.container}>
+                    <View style={styles.button}>
+                        <Button title={'Edit'} color={'white'} onPress={() => handleEdit() }/>
+                    </View>
+                    <View style={styles.button}>
+                        <Button title={'Delete'} color={'white'} onPress={() => confirmDelete()}/>
+                    </View>
+                </View>
             </View>
         </View>
     );
@@ -113,11 +120,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-start',
+        marginTop: 11,
     },
     row: {
         margin: 5,
         padding: 5,
         flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "center",
+        alignSelf: "center"
     },
     image: {
         width:'100%',
@@ -128,11 +139,26 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         justifyContent: "center"
     },
+    button:{
+    backgroundColor: 'black',
+        borderWidth: 4,
+        borderColor: 'white',
+        borderRadius: 30,
+        marginTop: 5,
+    },
     label: {
+        justifyContent: "center",
+        alignItems: "center",
         width: 100,
         fontWeight: 'bold' ,
+        fontSize: 18,
+        margin: 3
     },
     value: {
-        flex: 1
+        flex: 1,
+        fontSize: 18,
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 4
     },
 });
