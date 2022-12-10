@@ -44,7 +44,7 @@ const ApartmentDetails = ({route,navigation}) => {
             firebase
                 .database()
                 // Vi sætter bilens ID ind i stien
-                .ref(`/Cars/${id}`)
+                .ref(`/Apartments/${id}`)
                 // Og fjerner data fra den sti
                 .remove();
             // Og går tilbage når det er udført

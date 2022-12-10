@@ -11,7 +11,7 @@ const ApartmentList = ({navigation}) => {
         if(!apartments) {
             firebase
                 .database()
-                .ref('/Cars')
+                .ref('/Apartments')
                 .on('value', snapshot => {
                     setApartments(snapshot.val())
                 });

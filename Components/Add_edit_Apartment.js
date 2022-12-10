@@ -19,7 +19,8 @@ const Add_Apartment = ({navigation,route}) => {
         size: '',
         bedrooms: '',
         bathrooms: '',
-        payment: ''
+        payment: '',
+        ranking: ''
     }
 
     const [newApartment,setNewApartment] = useState(initialState);
@@ -43,9 +44,9 @@ const Add_Apartment = ({navigation,route}) => {
 
     const handleSave = () => {
 
-        const { address, size, bedrooms, bathrooms, payment } = newApartment;
+        const { address, size, bedrooms, bathrooms, payment, ranking } = newApartment;
 
-        if(address.length === 0 || size.length === 0 || bedrooms.length === 0 || bathrooms.length === 0 || payment.length === 0 ){
+        if(address.length === 0 || size.length === 0 || bedrooms.length === 0 || bathrooms.length === 0 || payment.length === 0 || ranking.length === 0 ){
             return Alert.alert('Et af felterne er tomme!');
         }
 
@@ -54,9 +55,9 @@ const Add_Apartment = ({navigation,route}) => {
             try {
                 firebase
                     .database()
-                    .ref(`/Cars/${id}`)
+                    .ref(`/Apartments/${id}`)
                     // Vi bruger update, så kun de felter vi angiver, bliver ændret
-                    .update({ address, size, bedrooms, bathrooms, payment });
+                    .update({ address, size, bedrooms, bathrooms, payment, ranking });
                 // Når bilen er ændret, går vi tilbage.
                 Alert.alert("Din info er nu opdateret");
                 const apartment = [id,newApartment]
@@ -70,8 +71,8 @@ const Add_Apartment = ({navigation,route}) => {
             try {
                 firebase
                     .database()
-                    .ref('/Cars/')
-                    .push({ address, size, bedrooms, bathrooms, payment });
+                    .ref('/Apartments/')
+                    .push({ address, size, bedrooms, bathrooms, payment, ranking });
                 Alert.alert(`Saved`);
                 setNewApartment(initialState)
             } catch (error) {
