@@ -1,11 +1,33 @@
 import * as React from 'react';
-import { View, Text, Platform, StyleSheet, Button, Alert } from 'react-native';
+import {View, Text, Platform, StyleSheet, Button, Alert, Card, Image} from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
+import {Chat} from "./Chat";
 
 
 const ApartmentDetails = ({route,navigation}) => {
     const [apartment,setApartment] = useState({});
+
+    const [randomImage, setRandomImage] = React.useState('');
+
+    const renderImage = () => {
+        const Images = [
+            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8372.jpg' },
+            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8551.jpg' },
+            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8355.jpg' },
+            { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWt7crR0Yo9FwSIo-Rx9PaSy5Pzdk8FBZeuA&usqp=CAU' },
+            { image: 'https://www.bolig.com/wp-content/uploads/2020/01/76-m%C2%B2-lejlighed-K%C3%B8benhavn-S-530x300.jpg' },
+            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8387.jpg' },
+            { image: 'https://s3.eu-central-1.amazonaws.com/lejeboligdata/images/lease/1603700/c7e16afa-6753-4e4a-83c0-131042288035_large.jpg' },
+            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/lejlighederne2_web.jpg' },
+        ];
+        const randomImageIndex = Math.floor(Math.random() * Math.floor(4));
+        return Images[randomImageIndex].image;
+    };
+
+    React.useEffect(() => {
+        setRandomImage(renderImage);
+    });
 
     useEffect(() => {
         /*Henter apartment values og sætter dem*/
@@ -74,9 +96,13 @@ const ApartmentDetails = ({route,navigation}) => {
                             {/*Vores apartment values navne */}
                             <Text style={styles.value}>{item[1]}</Text>
                         </View>
+
                     )
                 })
             }
+            <View>
+                <Image source={{uri: renderImage()}} style={styles.image}/>
+            </View>
         </View>
     );
 }
@@ -92,6 +118,15 @@ const styles = StyleSheet.create({
         margin: 5,
         padding: 5,
         flexDirection: 'row',
+    },
+    image: {
+        width:'100%',
+        height:'60%',
+        margin: 10,
+        marginHorizontal: 10,
+        marginBottom:10,
+        alignSelf: "center",
+        justifyContent: "center"
     },
     label: {
         width: 100,
