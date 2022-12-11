@@ -12,10 +12,10 @@ function HomeScreen ({ navigation }){
             </ImageBackground>
             <View style={styles.text}>
             <View style={styles.button} >
-                <Button color={'black'} title={'Go to Login'} onPress={()=> navigation.navigate('Login')}/>
+                <Button color={'black'} title={'Login'} onPress={()=> navigation.navigate('Login')}/>
             </View>
             <View style={styles.button} >
-                <Button color={'black'} title={'Go to Register'} onPress={()=> navigation.navigate('Register')}/>
+                <Button color={'black'} title={'Register'} onPress={()=> navigation.navigate('Register')}/>
             </View>
             </View>
         </View>
@@ -28,11 +28,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        color: 'grey'
     },
     button: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#D09CFA',
         marginBottom: 10,
         padding: 10,
         marginHorizontal: 20,
@@ -46,12 +47,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: '100%',
         width: '100%',
-        maxWidth: windowWidth,
     },
     text:{
         flexDirection: "row",
+        backgroundColor: '#ffffff',
         paddingBottom: 90,
-        backgroundColor: '#8db5c2',
         paddingTop: 30,
     },
 })

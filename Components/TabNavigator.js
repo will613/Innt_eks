@@ -15,10 +15,7 @@ function MyTabs (){
         <Stack.Navigator >
             <Stack.Screen name="Welcome to MinAndel" component={HomeScreen} options={{
                 title: 'Welcome to MinAndel',
-                headerStyle: {
-                    backgroundColor: '#8db5c2',
-                },
-                headerTintColor: '#fff',
+                headerTintColor: '#000000',
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     fontSize: 25

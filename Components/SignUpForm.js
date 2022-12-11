@@ -20,7 +20,13 @@ function SignUpForm() {
 
     //denne knap gør det muligt at oprette en brugere, som aktiverer handleSubmit igennem onPress
     const renderButton = () => {
-        return <Button onPress={() => handleSubmit()} title="Create user" />;
+        return (
+    <View style={styles.button}>
+      <Text>
+        <Button onPress={() => handleSubmit()} title="Create user" />
+      </Text>
+    </View>
+    )
     };
 
 
@@ -46,12 +52,14 @@ function SignUpForm() {
         <View style={styles.container}>
             <Text style={styles.header}>Sign up</Text>
             <TextInput
+                color={'white'}
                 placeholder="email"
                 value={email}
                 onChangeText={(email) => setEmail(email)}
                 style={styles.inputField}
             />
             <TextInput
+                color={'white'}
                 placeholder="password"
                 value={password}
                 onChangeText={(password) => setPassword(password)}
@@ -72,14 +80,31 @@ const styles = StyleSheet.create({
         color: 'red',
     },
     inputField: {
-        borderWidth: 1,
-        margin: 20,
-        padding: 20,
-        width: 200,
-        textAlign: "center",
+        width: 350,
+        height: 55,
+        backgroundColor: '#42A5F5',
+        margin: 10,
+        padding: 8,
+        color: 'white',
+        borderRadius: 14,
+        fontSize: 18,
+        fontWeight: '500',
     },
     header: {
         fontSize: 40,
+    },
+    button: {
+        backgroundColor: '#42A5F5',
+        borderWidth: 0,
+        color: '#FFFFFF',
+        borderColor: '#7DE24E',
+        height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+        marginBottom: 25,
     },
     container:{
         flex: 1,
