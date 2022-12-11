@@ -5,6 +5,8 @@ import {Button,Text,
     ActivityIndicator,
     StyleSheet,
 } from 'react-native';
+import {LinearGradient} from "expo-linear-gradient";
+
 
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
@@ -20,7 +22,17 @@ function SignUpForm() {
 
     //denne knap gør det muligt at oprette en brugere, som aktiverer handleSubmit igennem onPress
     const renderButton = () => {
-        return <Button onPress={() => handleSubmit()} title="Create user" />;
+        return (
+            <View style={styles.button}>
+                <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10,
+                    borderColor: 'white', width: 200, height:70,
+                    justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                    <Text>
+                        <Button color={'white'} onPress={() => handleSubmit()} title="Create user" />;
+                    </Text>
+                </LinearGradient>
+            </View>
+        )
     };
 
 
@@ -46,13 +58,15 @@ function SignUpForm() {
         <View style={styles.container}>
             <Text style={styles.header}>Sign up</Text>
             <TextInput
-                placeholder="email"
+                color={'white'}
+                placeholder="Email address"
                 value={email}
                 onChangeText={(email) => setEmail(email)}
                 style={styles.inputField}
             />
             <TextInput
-                placeholder="password"
+                color={'white'}
+                placeholder="Create password"
                 value={password}
                 onChangeText={(password) => setPassword(password)}
                 secureTextEntry
@@ -72,14 +86,27 @@ const styles = StyleSheet.create({
         color: 'red',
     },
     inputField: {
-        borderWidth: 1,
+        borderWidth: 2,
         margin: 20,
         padding: 20,
-        width: 200,
+        width: 300,
         textAlign: "center",
     },
     header: {
-        fontSize: 40,
+        fontSize: 50,
+    },
+    button: {
+        backgroundColor: '#42A5F5',
+        borderWidth: 0,
+        color: '#FFFFFF',
+        borderColor: '#7DE24E',
+        height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+        marginBottom: 25,
     },
     container:{
         flex: 1,

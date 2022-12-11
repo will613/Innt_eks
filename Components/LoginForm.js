@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
+import {LinearGradient} from "expo-linear-gradient";
 
 function LoginForm() {
 
@@ -37,7 +38,17 @@ function LoginForm() {
     // HandleSubmit, som er defineret ovenfor, er funktionaliteten til at kunne logge ind
     // Denne funktion bliver eksekveret ved onPress()
     const renderButton = () => {
-        return <Button onPress={() => handleSubmit()} title="Login" />;
+        return (
+        <View style={styles.button}>
+        <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10,
+            borderColor: 'white', width: 200, height:70,
+            justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+            <Text>
+            <Button color={'white'} onPress={() => handleSubmit()} title="Login" />;
+                </Text>
+        </LinearGradient>
+    </View>
+        )
     };
 
 //I nedenstående kode, returner vi textfelterne til at indsætte dataen
@@ -77,14 +88,14 @@ const styles = StyleSheet.create({
         color: 'red',
     },
     inputField: {
-        borderWidth: 1,
+        borderWidth: 2,
         margin: 20,
         padding: 20,
-        width: 200,
+        width: 300,
         textAlign: "center",
     },
     header: {
-        fontSize: 40,
+        fontSize: 50,
     },
     container:{
         flex: 1,
@@ -92,6 +103,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 30,
+    },
+    button: {
+        height: 40,
+        borderRadius: 30,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+        marginBottom: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center'
     },
 });
 
