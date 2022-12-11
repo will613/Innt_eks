@@ -7,7 +7,7 @@ import {
     Button,
     Alert,
     ScrollView,
-    SafeAreaView,
+    SafeAreaView, Image, ImageBackground,
 } from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
@@ -100,8 +100,13 @@ const Add_Apartment = ({navigation,route}) => {
                     })
                 }
                 {/*Hvis vi er inde på edit car, vis save changes i stedet for add car*/}
-                <Button title={ isEditApartment ? "Save changes" : "Add Apartment"} onPress={() => handleSave()} />
-            </ScrollView>
+                <View style={styles.button}>
+                <Button color={'white'} title={ isEditApartment ? "Save changes" : "Add Apartment"} onPress={() => handleSave()} />
+                </View>
+                <View>
+                <ImageBackground source={{uri: 'https://features.api.westelm.com/wp-content/uploads/2020/03/west-elm-oakbrook-design-crew-06.jpg'}} style={{width: 400, height: '103%'}} />
+                </View>
+                </ScrollView>
         </SafeAreaView>
     );
 }
@@ -119,8 +124,19 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     label: {
-        fontWeight: 'bold',
-        width: 100
+        justifyContent: "center",
+        alignItems: "center",
+        width: 100,
+        fontWeight: 'bold' ,
+        fontSize: 18,
+        margin: 3
+    },
+    button:{
+        backgroundColor: 'black',
+        borderWidth: 4,
+        borderColor: 'white',
+        borderRadius: 30,
+        marginTop: 5,
     },
     buttonStyle :{
     backgroundColor: 'black',

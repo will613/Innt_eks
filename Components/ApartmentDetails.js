@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Platform, StyleSheet, Button, Alert, Card, Image} from 'react-native';
+import {View, Text, Platform, StyleSheet, Button, Alert, Image, ScrollView} from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
 import {Chat} from "./Chat";
@@ -85,7 +85,9 @@ const ApartmentDetails = ({route,navigation}) => {
 
     //all content
     return (
+        <ScrollView>
         <View style={styles.container}>
+            <Image source={{uri: renderImage()}} style={styles.image}/>
             {
                 Object.entries(apartment).map((item,index)=>{
                     return(
@@ -99,8 +101,6 @@ const ApartmentDetails = ({route,navigation}) => {
                     )
                 })
             }
-            <View>
-                <Image source={{uri: renderImage()}} style={styles.image}/>
                 <View style={styles.container}>
                     <View style={styles.button}>
                         <Button title={'Edit'} color={'white'} onPress={() => handleEdit() }/>
@@ -109,8 +109,8 @@ const ApartmentDetails = ({route,navigation}) => {
                         <Button title={'Delete'} color={'white'} onPress={() => confirmDelete()}/>
                     </View>
                 </View>
-            </View>
         </View>
+        </ScrollView>
     );
 }
 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-start',
-        marginTop: 11,
+        marginTop: 0,
     },
     row: {
         margin: 5,
@@ -133,11 +133,11 @@ const styles = StyleSheet.create({
     image: {
         width:'100%',
         height:'60%',
-        margin: 10,
-        marginHorizontal: 10,
-        marginBottom:10,
+        margin: 0,
+        marginHorizontal: 1,
+        marginBottom: 5,
         alignSelf: "center",
-        justifyContent: "center"
+        justifyContent: 'flex-start',
     },
     button:{
     backgroundColor: 'black',
