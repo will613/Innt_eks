@@ -14,11 +14,11 @@ function MyTabs (){
     return(
         <Stack.Navigator >
             <Stack.Screen name="Welcome to MinAndel" component={HomeScreen} options={{
-                title: 'Welcome to MinAndel',
+                title: 'MinAndel',
                 headerTintColor: '#000000',
                 headerTitleStyle: {
                     fontWeight: 'bold',
-                    fontSize: 25
+                    fontSize: 25,
                 },
             }}/>
             <Stack.Screen name="Register" component={SignUpForm}/>
