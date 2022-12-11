@@ -2,7 +2,7 @@ import * as React from 'react';
 import {View, Text, Platform, StyleSheet, Button, Alert, Image, ScrollView} from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
-import {Chat} from "./Chat";
+import {LinearGradient} from "expo-linear-gradient";
 
 
 
@@ -94,19 +94,25 @@ const ApartmentDetails = ({route,navigation}) => {
                         <View style={styles.row} key={index}>
                             {/*Vores apartment keys navn*/}
                             <Text style={styles.label}>{item[0]} </Text>
-                            {/*Vores apartment values navne */}
+                            {/*Vores apartment values n
+                            avne */}
                             <Text style={styles.value}>{item[1]}</Text>
                         </View>
-
                     )
                 })
             }
                 <View style={styles.container}>
                     <View style={styles.button}>
+                        <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10, borderColor: 'white',
+                            width: '100%', height:'120%', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                         <Button title={'Edit'} color={'white'} onPress={() => handleEdit() }/>
+                        </LinearGradient>
                     </View>
                     <View style={styles.button}>
+                        <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10, borderColor: 'white',
+                            width: '100%', height:'120%', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                         <Button title={'Delete'} color={'white'} onPress={() => confirmDelete()}/>
+                        </LinearGradient>
                     </View>
                 </View>
         </View>
@@ -140,11 +146,13 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     button:{
-    backgroundColor: 'black',
-        borderWidth: 4,
-        borderColor: 'white',
-        borderRadius: 30,
-        marginTop: 5,
+        flex: 1,
+        marginBottom: 5,
+        padding: 10,
+        marginHorizontal: 20,
+        borderRadius: 10,
+        paddingBottom: 5,
+        paddingTop: 5
     },
     label: {
         justifyContent: "center",

@@ -110,6 +110,5 @@ const styles = StyleSheet.create({
         marginTop: 15,
         fontWeight: "bold",
         fontSize: 20,
-    },
-    label: { fontWeight: 'bold' },
+    }
 });

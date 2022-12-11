@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import firebase from 'firebase/compat';
 import {useEffect, useState} from "react";
+import {LinearGradient} from "expo-linear-gradient";
 
 
 const Add_Apartment = ({navigation,route}) => {
@@ -67,7 +68,6 @@ const Add_Apartment = ({navigation,route}) => {
             }
 
         }else{
-
             try {
                 firebase
                     .database()
@@ -79,7 +79,6 @@ const Add_Apartment = ({navigation,route}) => {
                 console.log(`Error: ${error.message}`);
             }
         }
-
     };
 
     return (
@@ -107,10 +106,14 @@ const Add_Apartment = ({navigation,route}) => {
                 </View>
                 {/*Hvis vi er inde på edit car, vis save changes i stedet for add car*/}
                 <View style={styles.button}>
-                <Button color={'white'} title={ isEditApartment ? "Save changes" : "Add Apartment"} onPress={() => handleSave()} />
+                    <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 0, borderRadius: 10, borderColor: 'white', width: '100%', height:'120%',
+                        justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                <Button color={'white'}  styles={styles.buttontext} title={ isEditApartment ? "Save changes" : 'Add Apartment'} onPress={() => handleSave()} />
+                    </LinearGradient>
                 </View>
                 <View>
-                <ImageBackground source={{uri: 'https://features.api.westelm.com/wp-content/uploads/2020/03/west-elm-oakbrook-design-crew-06.jpg'}} style={{width: 400, height: '103%'}} />
+                <ImageBackground source={{uri: 'https://features.api.westelm.com/wp-content/uploads/2020/03/west-elm-oakbrook-design-crew-06.jpg'}}
+                                 style={{width: '100%', height: '90%'}} />
                 </View>
                 </ScrollView>
         </SafeAreaView>
@@ -138,17 +141,13 @@ const styles = StyleSheet.create({
         margin: 3
     },
     button:{
-        backgroundColor: 'black',
-        borderWidth: 4,
-        borderColor: 'white',
-        borderRadius: 30,
-        marginTop: 5,
-    },
-    buttonStyle :{
-    backgroundColor: 'black',
-        borderWidth: 2,
-        borderColor: 'white',
-        borderRadius: 30,
+        flex: 1,
+        marginBottom: 5,
+        padding: 10,
+        marginHorizontal: 20,
+        borderRadius: 10,
+        paddingBottom: 5,
+        paddingTop: 5
     },
     input: {
         borderWidth: 1,
@@ -158,6 +157,12 @@ const styles = StyleSheet.create({
     titleText:{
         fontSize: 10,
         fontWeight: 'bold'
+    },
+    buttontext:{
+        alignSelf: "center",
+        justifyContent: "center",
+        fontSize: 18,
+        fontWeight: "bold"
     },
     innerText1: {
         color: 'orange'
