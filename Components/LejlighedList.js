@@ -8,14 +8,14 @@ const ApartmentList = ({navigation}) => {
     const [randomImage, setRandomFrontImage] = React.useState('');
     const frontImage = () => {
         const Images = [
-            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8372.jpg' },
-            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8551.jpg' },
-            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8355.jpg' },
-            { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWt7crR0Yo9FwSIo-Rx9PaSy5Pzdk8FBZeuA&usqp=CAU' },
-            { image: 'https://www.bolig.com/wp-content/uploads/2020/01/76-m%C2%B2-lejlighed-K%C3%B8benhavn-S-530x300.jpg' },
-            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8397.jpg' },
-            { image: 'https://www.boligdeal.dk/LPUploadImages/Cache/7f99f120-c8b8-46f5-87e1-8ac4d0cfe2ec_550.jpg?t=637345685028042912' },
-            { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/lejlighederne2_web.jpg' },
+            { image: 'https://migogaalborg.dk/wp-content/uploads/2021/05/pic1-9.png' },
+            { image: 'https://images1.forrent.com/i2/o2qiGDuHuq7h_UEQndg_KKEN0k2d-bqdqEn-KpWXBds/117/image.jpg' },
+            { image: 'https://migogaalborg.dk/wp-content/uploads/2020/12/Down-Town-Vejgaard_2_2E-GROUP-800x480.png' },
+            { image: 'https://img2.thejournal.ie/article/4146251/river/?height=400&version=4147474' },
+            { image: 'https://www.domea.dk/media/3421/bygninger-jl-5373-web.png' },
+            { image: 'https://media.istockphoto.com/id/1322575582/photo/exterior-view-of-modern-apartment-building-offering-luxury-rental-units-in-silicon-valley.jpg?b=1&s=170667a&w=0&k=20&c=0s6qL5cIMm6LSnryH40h5GmaM6jCi11kchWzsaTJGZE=' },
+            { image: 'https://media.istockphoto.com/id/1165384568/photo/europe-modern-complex-of-residential-buildings.jpg?s=612x612&w=0&k=20&c=iW4NBiMPKEuvaA7h8wIsPHikhS64eR-5EVPfjQ9GPOA=' },
+            { image: 'https://thumbs.dreamstime.com/b/apartment-building-19532951.jpg' },
         ];
         const randomImageIndex = Math.floor(Math.random() * Math.floor(4));
         return Images[randomImageIndex].image;
@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
         borderRadius:10,
         margin: 20,
         padding: 10,
-        height: 200,
+        height: 180,
         width: '95%',
         justifyContent:'center',
         alignSelf:'center'
     },
     image: {
-        width:'100%',
-        height:'85%',
+        width:'106%',
+        height:'80%',
         margin: 10,
         marginHorizontal: 10,
         marginBottom:10,
