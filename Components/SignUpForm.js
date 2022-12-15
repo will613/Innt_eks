@@ -6,21 +6,22 @@ import {Button,Text,
     StyleSheet,
 } from 'react-native';
 import {LinearGradient} from "expo-linear-gradient";
-
-
-import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+//Ovenstående kode er nødvendige r for at kunne få koden til at virke
+//LinearGradient er en pakke som gør det muligt at sammensætte flere farver i fx en knap (det bruges kun til styling)
 
 
+//Her startes funktionen for at kunne oprette en bruger
 function SignUpForm() {
-    //Her defineres state-variablerne som skal bruges i funktionen senere.
+    //Her defineres tilstandsvariablerne, som anvendes senere i funktionen for at kunne logge ind
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isCompleted, setCompleted] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
 
-    //denne knap gør det muligt at oprette en brugere, som aktiverer handleSubmit igennem onPress
+    //RenderButton, som er en knap, gør det muligt at kunne oprette en bruger, for uden en knap vil man ikke kunne eksekvere koden.
+    //På linje 36 eksekveres funktionen "handleSubmit" igennem onPress.
+    //Dertil er der lavet lokal styling til knappen. LinearGradient anvendes for at kunne style knappen med 2 forskellige Hex koder
     const renderButton = () => {
         return (
             <View style={styles.button}>
@@ -35,12 +36,10 @@ function SignUpForm() {
         )
     };
 
+//handleSubmit aggere tæt op ad samme logik som loginformen. I stedet for at bruge signInWithEmailAndPassword, anvendes createUserWithEmailAndPassword -->
+//Som er en prædefineret metode af firebase. Mail og password bliver derfor indsat som argumenter og opretter en bruger i firebase
+//Hvis der sker en fejl logger den en besked. Det kan fx være at man glemmer at udfylde Password, i det man prøver at registrere en bruger.
 
-    /*
-   * Denne kode agere ligesom login formen. Vi skal have valideret email og password. Dette gøres ved en asynkron kald ved hjælp af en prædefineret metode fra firebase
-   * createUserWithEmailAndPassword tager mail og password som argumenter og opretter en bruger i firebase,
-   * sker der en fejl, eksekveres linje 43, som er errorMessage (fejlkode)
-   */
     const handleSubmit = async() => {
         try {
             await firebase.auth().createUserWithEmailAndPassword(email, password).then((data)=>{
@@ -51,9 +50,9 @@ function SignUpForm() {
 
     }
 
-// der oprettes inputfelter i return hvor man skriver sine oplysninger, både email og password
-// Der kan ske en fejl, og her printes en fejlbesked til brugeren.
-// renderButton er inde i dette return, da knappen skal eksekvere funktionaliteten.
+//I nedenstående kode, returner vi textfelter til at indsætte dataen i databasen.
+//Der er både tekstfelt for email og password, som er påkrævet for at kunne oprette en bruger. Styling sker længere nede i denne fil
+//Hvis der sker en fejl, printes en fejlbesked  for brugeren.
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Sign up</Text>
@@ -79,6 +78,9 @@ function SignUpForm() {
         </View>
     );
 }
+
+//Eksport af Signuoform, således denne kan importeres og benyttes i andre filer
+export default SignUpForm
 
 //Lokal styling til brug i SignUpForm
 const styles = StyleSheet.create({
@@ -117,5 +119,3 @@ const styles = StyleSheet.create({
     },
 });
 
-//Eksport af Signuoform, således denne kan importeres og benyttes i andre komponenter
-export default SignUpForm

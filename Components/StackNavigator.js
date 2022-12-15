@@ -7,10 +7,24 @@ import ApartmentDetails from "./ApartmentDetails"
 import Add_Apartment from "./Add_edit_Apartment";
 import {Chat} from "./Chat";
 import Ionicons from "react-native-vector-icons/Ionicons";
+//Ovenstående kode er nødvendigt for at kunne logikken til at fungere i denne fil.
+//Der er importeret ApartmentList, ApartmentDetails og Add_Apartment for at kunne lave en stack med disse.
 
+//Nedenstående const er Stack og Tab.
+
+//Stack consten bruges i funktionen "MyStack". Vi ønsker at lave en stack for at navigere mellem følgende:
+//ApartmentList, ApartmentDetails, Add_Apartment (tilføj en lejlighed) samt redigering.
 const Stack = createStackNavigator()
+//Tab consten bruges i funktionen "ButtomStack". Vi ønsker at lave en navigator i bunden af applikationen for at kunne navigere mellem følgende:
+//Home --> viser listen af lejligheder
+//Add --> side til at tilføje en lejlighed
+//Chat --> For at kunne chatte med ejer af andelsbolig
 const Tab = createBottomTabNavigator()
 
+
+//"MyStack" gør det muligt at lave en stack mellem følgende komponenter:
+//ApartmentList, ApartmentDetails & Add_Apartment
+//Funktionen bruges i Home tab, for at kunne navigere mellem de forskellige stacks.
 function MyStack (){
     return(
         <Stack.Navigator>
@@ -22,6 +36,11 @@ function MyStack (){
     )
 }
 
+//"ButttomStack" gør det muligt at navigere mellem følgende sider:
+// Home, Add og Chat.
+// Home tab tager MyStack som component, som dertil indeholde ovenstående componenter
+// Add tab tager Add_apartment som component, for at kunne oprette en andelsbolig
+// Chat tab tager Chat som compoenent, for at kunne chatte med ejere af andelsboliger
 function BottomStack ()
 {
     return(
