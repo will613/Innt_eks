@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 
 const ApartmentList = ({navigation}) => {
 
+    //Her linkes der til billeder på nettet, som skal blive vist tilfældigt på bolig opslagene
     const [randomImage, setRandomFrontImage] = React.useState('');
     const frontImage = () => {
         const Images = [
@@ -18,6 +19,7 @@ const ApartmentList = ({navigation}) => {
             { image: 'https://thumbs.dreamstime.com/b/apartment-building-19532951.jpg' },
         ];
         const randomImageIndex = Math.floor(Math.random() * Math.floor(4));
+        // Ovenover er der oprettet en matematisk ligning, som randomiser, hvilke billeder der skal blive vist
         return Images[randomImageIndex].image;
     };
 
@@ -32,35 +34,38 @@ const ApartmentList = ({navigation}) => {
             firebase
                 .database()
                 .ref('/Apartments')
+                // Her bliver referet til apartments delen i databasen
                 .on('value', snapshot => {
                     setApartments(snapshot.val())
                 });
         }
     },[]);
 
-    // Vi viser ingenting hvis der ikke er data
+    // Denne loading text bliver vist, hvis der ikke er noget data, som der kan hentes
     if (!apartments) {
         return <Text>Loading...</Text>;
     }
 
     const handleSelectApartment = id => {
-        /*Her søger vi direkte i vores array af apartments og finder apartment objektet som matcher idet vi har tilsendt*/
+        /* I denne handleSelect søger brugerne ind i vores array af aparetments i databasen
+        Derefter finder den apartment objektet, som passer det ID brugeren har sendt*/
         const apartment = Object.entries(apartments).find( apartment => apartment[0] === id /*id*/)
         navigation.navigate('Apartment Details', { apartment });
     };
-
-    // Flatlist forventer et array. Derfor tager vi alle values fra vores cars objekt, og bruger som array til listen
+    // her forventer FLatlisten et array, som skal vises. Derfor tager den alle values det apartment objekt i databasen, og bruger som array der vises på listen
     const apartmentArray = Object.values(apartments);
     const apartmentKeys = Object.keys(apartments);
 
     return (
         <FlatList
             data={apartmentArray}
-            // Vi bruger carKeys til at finde ID på den aktuelle bil og returnerer dette som key, og giver det med som ID til CarListItem
+            // Der bruger her apartmetnKeys til at finde ID på den aktuelle apartment og returnerer dette som key, og giver det med som id til AparmentlistItem
             keyExtractor={(item, index) => apartmentKeys[index]}
             renderItem={({item, index }) => {
                 return(
                     <TouchableOpacity style={styles.container} onPress={() => handleSelectApartment(apartmentKeys[index])}>
+                        {/*Her viser adressen, størrelsen og billedet på et opslag
+                        Brugerne kan derefter tilgå details siden*/}
                         <Text style={styles.title}>
                             {item.address} {item.size}
                         </Text>
@@ -76,7 +81,7 @@ const ApartmentList = ({navigation}) => {
 
 export default ApartmentList;
 
-
+// Lokal styling
 const styles = StyleSheet.create({
     container: {
         flex: 1,

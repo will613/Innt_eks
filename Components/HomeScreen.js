@@ -1,9 +1,8 @@
 import {Button, ImageBackground, StyleSheet, Text, View} from "react-native";
 import * as React from "react";
 import {LinearGradient} from "expo-linear-gradient";
-import { Dimensions } from 'react-native';
-//const windowWidth = Dimensions.get('window').width;
 
+// Her bliver homepage billedet importeret
 const image ={uri:'https://media.istockphoto.com/id/1388026461/photo/apartment-buildings-in-a-residential-area.jpg?b=1&s=170667a&w=0&k=20&c=qXuT2g8XBsOlEcFNGltso_GApGFZEV0FjR2S44VuFK4=' }
 
 function HomeScreen ({ navigation }){
@@ -12,12 +11,16 @@ function HomeScreen ({ navigation }){
             <ImageBackground source={image} style={styles.image}/>
             <View style={styles.text}>
             <View style={styles.button}>
+                {/*Her opstiller vi knapper med gradient farven, som der navigerer til login siden
+                Så brugerne bliver navigeret til login siden*/}
                 <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10, borderColor: 'white', width: '100%', height:50,
                     justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                 <Button color={'white'} title={'Login'} style={styles.buttontext} onPress={()=> navigation.navigate('Login')}/>
                 </LinearGradient>
             </View>
             <View style={styles.button} >
+                {/*Her opstiller vi knapper med gradient farven, som der navigerer til register siden
+                Så brugerne bliver navigeret til register siden*/}
                 <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10, borderColor: 'white',width: '100%', height:50,
                     justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                 <Button color={'white'} title={'Register'}  onPress={()=> navigation.navigate('Register')}/>
@@ -30,6 +33,7 @@ function HomeScreen ({ navigation }){
 
 export default HomeScreen
 
+// Lokal styling
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -66,24 +70,4 @@ const styles = StyleSheet.create({
         paddingTop: 30,
     },
 })
-/*
-paddingTop:100,
-    paddingBottom: 100,
-    borderWidth: 20,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: '100%'
-},
-text: {
-    fontSize: 20,
-},
-roundButton: {
-    width: 100,
-        height: 100,
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 10,
-        borderRadius: 100,
-},
-*/
+

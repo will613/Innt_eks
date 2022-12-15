@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
+// Her importeres der giftedchat pakken, som simplificere at udvikle en chat funktion til apppen.
 
 export function Chat() {
     const [messages, setMessages] = useState([]);
-
+// Her ligges der grundæaget for at chat funktionalitet kan udvikles
     useEffect(() => {
         setMessages([
             {

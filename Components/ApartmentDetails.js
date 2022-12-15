@@ -9,8 +9,8 @@ import {LinearGradient} from "expo-linear-gradient";
 const ApartmentDetails = ({route,navigation}) => {
     const [apartment,setApartment] = useState({});
 
+    //Her linkes der til billeder på nettet, som skal blive vist tilfældigt på bolig opslagene
     const [randomImage, setRandomImage] = React.useState('');
-
     const renderImage = () => {
         const Images = [
             { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/DSC_8372.jpg' },
@@ -23,6 +23,7 @@ const ApartmentDetails = ({route,navigation}) => {
             { image: 'https://pionerhusene.dk/wp-content/uploads/2019/02/lejlighederne2_web.jpg' },
         ];
         const randomImageIndex = Math.floor(Math.random() * Math.floor(4));
+        // Ovenover er der oprettet en matematisk ligning, som randomiser, hvilke billeder der skal blive vist
         return Images[randomImageIndex].image;
     };
 
@@ -31,48 +32,48 @@ const ApartmentDetails = ({route,navigation}) => {
     });
 
     useEffect(() => {
-        /*Henter apartment values og sætter dem*/
+        /*Her henter den nødvendige data på apartment og viser dem*/
         setApartment(route.params.apartment[1]);
 
-        /*Når vi forlader screen, tøm object*/
+        /*Når brugeren forlader denne side, så bliver objektet tømt*/
         return () => {
             setApartment({})
         }
     });
 
     const handleEdit = () => {
-        // Vi navigerer videre til Edit apartment skærmen og sender den specifike apartment videre med
+        // Her i denne handleEdit håndterer vi at opslagene kan redigeres
+        // Brugeren bliver navigeret til Edit Apartment siden, hvor dataen bliver på det valgte opslag bliver sendt med videre
         const apartment = route.params.apartment
         navigation.navigate("Edit Apartment", { apartment });
     };
 
 
-    // Vi spørger brugeren om de er sikker på at det skal slettes
+    // Her dobbeltjekkes der om brugeren gerne vil slette opslaget
     const confirmDelete = () => {
-        /*Er det mobile?*/
+        /*Tjekkes om der er mobile og i så fald, hvilket operativ system det er?*/
         if(Platform.OS ==='ios' || Platform.OS ==='android'){
             Alert.alert('Are you sure?', 'Do you want to delete the apartment listing?', [
 
                 { text: 'Cancel', style: 'cancel' },
-                // Vi bruger this.handleDelete som eventHandler til onPress
+                // Der bruges this.handleDelete som eventHandler til onPress
                 { text: 'Delete', style: 'destructive', onPress: () => handleDelete() },
             ]);
         }
     };
 
-    // Vi sletter den aktuelle bil
+    // Den aktuelle aparment bliver slettet her
     const  handleDelete = () => {
         const id = route.params.apartment[0];
         try {
             firebase
                 .database()
-                // Vi sætter bilens ID ind i stien
+                // her passer vi apartment ID ind i stien, så den rigtige apartment kan slettes
                 .ref(`/Apartments/${id}`)
-                // Og fjerner data fra den sti
+                // Derefter fjeren vi data fra denne sti
                 .remove();
-            // Og går tilbage når det er udført
             navigation.goBack();
-            // Og går tilbage når det er udført
+            // Her bliver brugeren sendt tilbage, dette gøres ved brug af navigation .goback
         } catch (error) {
             Alert.alert(error.message);
         }
@@ -80,10 +81,10 @@ const ApartmentDetails = ({route,navigation}) => {
 
 
     if (!apartment) {
-        return <Text>No data</Text>;
+        return <Text>Ingen data på opslaget</Text>;
     }
 
-    //all content
+    //Her præsentere den alt dataen for brugerne
     return (
         <ScrollView>
         <View style={styles.container}>
@@ -92,23 +93,25 @@ const ApartmentDetails = ({route,navigation}) => {
                 Object.entries(apartment).map((item,index)=>{
                     return(
                         <View style={styles.row} key={index}>
-                            {/*Vores apartment keys navn*/}
+                            {/*Key navne på aparments bliver vist her*/}
                             <Text style={styles.label}>{item[0]} </Text>
-                            {/*Vores apartment values n
-                            avne */}
+                            {/*Her vises de values med label formattet vist for brugerne */}
                             <Text style={styles.value}>{item[1]}</Text>
+                            {/*Her vises de values, som der er blevet sendt til databasen på det specifikke opsla */}
                         </View>
                     )
                 })
             }
                 <View style={styles.container}>
                     <View style={styles.button}>
+                        {/*Her opstiller vi knapper med gradient farven*/}
                         <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10, borderColor: 'white',
                             width: '100%', height:'120%', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                         <Button title={'Edit'} color={'white'} onPress={() => handleEdit() }/>
                         </LinearGradient>
                     </View>
                     <View style={styles.button}>
+                        {/*Her opstiller vi knapper med gradient farven*/}
                         <LinearGradient colors={['#ff00d6', '#ff4d00']} style={{borderWidth: 1, borderRadius: 10, borderColor: 'white',
                             width: '100%', height:'120%', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                         <Button title={'Delete'} color={'white'} onPress={() => confirmDelete()}/>
