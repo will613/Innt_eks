@@ -57,14 +57,14 @@ function SignUpForm() {
         <View style={styles.container}>
             <Text style={styles.header}>Sign up</Text>
             <TextInput
-                color={'white'}
+                color={'black'}
                 placeholder="Email address"
                 value={email}
                 onChangeText={(email) => setEmail(email)}
                 style={styles.inputField}
             />
             <TextInput
-                color={'white'}
+                color={'black'}
                 placeholder="Create password"
                 value={password}
                 onChangeText={(password) => setPassword(password)}
